@@ -1,2 +1,5 @@
-# Algorithms-Python
-Data Structures and Algorithms in Python 
+# Algorithm Questions
+
+[Longest Peak](LongestPeak.md)
+
+[Validate BST ](ValidateBst.md)
