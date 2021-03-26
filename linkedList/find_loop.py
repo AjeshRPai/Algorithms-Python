@@ -10,9 +10,9 @@ def find_loop(head):
     visited = {}
 
     while current_node is not None:
-        if current_node.id in visited:
+        if current_node in visited:
             return current_node
-        visited[current_node.id] = True
+        visited[current_node] = True
         current_node = current_node.next
 
     return None
@@ -55,5 +55,6 @@ if __name__ == '__main__':
     node10.next = node4
     # print_linked_list(node)
     loop = find_loop(node)
-    if loop is not None:
-        print_linked_list(loop)
+    print(loop.value)
+    # if loop is not None:
+    #     print_linked_list(loop)
