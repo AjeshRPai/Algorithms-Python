@@ -3,40 +3,32 @@ class LinkedList:
         self.value = value
         self.next = None
 
-    def add(self, value):
-        while self.next is not None:
-            self = self.next
-            print(self.value)
 
-        if self is None:
-            self.value = value
-
-        self.next = LinkedList(value)
-
-
-def sumOfLinkedLists(linkedListOne, linkedListTwo):
-    head_one = linkedListOne
-    head_two = linkedListTwo
-
-    while head_one.next is not None and head_two.next is not None:
-        print("head one ", head_one.value, "head two ", head_two.value)
-        print_linked_list(linkedListOne)
-        if head_one.next.value > head_two.value:
-            temp_node = head_one.next
-            head_one.next = head_two
-            head_one.next.next = temp_node
-            head_two = head_two.next
-        else:
+def merge_linked_list(headOne, headTwo):
+    head_one = headOne
+    head_one_prev = None
+    head_two = headTwo
+    while head_one is not None and head_two is not None:
+        if head_one.value < head_two.value:
+            head_one_prev = head_one
             head_one = head_one.next
+        else:
+            if head_one_prev is not None:
+                head_one_prev.next = head_two
+            head_one_prev = head_two
+            head_two = head_two.next
+            head_one_prev.next = head_one
+    if head_one is None:
+        head_one_prev.next = head_two
 
-    return head_one
+    return headOne if headOne.value < headTwo.value else headTwo
 
 
 def print_linked_list(linkedList: LinkedList):
     current_node = linkedList
-
     list = []
     while current_node.value is not None:
+        print(current_node.value)
         list.append(current_node.value)
         if current_node.next is not None:
             current_node = current_node.next
@@ -68,5 +60,5 @@ if __name__ == '__main__':
     node9.next = node10
     print_linked_list(node)
     print_linked_list(node6)
-    list2 = sumOfLinkedLists(node, node6)
+    list2 = merge_linked_list(node, node6)
     print_linked_list(list2)
