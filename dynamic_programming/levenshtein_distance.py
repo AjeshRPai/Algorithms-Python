@@ -17,8 +17,8 @@ def levenshteinDistance(str1, str2):
 
     print(cell)
 
-    for column in range(1,columns):
-        cell[column][0] = cell[column-1][0]+1
+    for row in range(1,rows):
+        cell[row][0] = cell[row-1][0]+1
 
     print(cell)
 
