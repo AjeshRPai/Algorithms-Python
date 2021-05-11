@@ -17,12 +17,13 @@ def printTree(tree):
 
 
 def kthLargestUtil(root, k, c):
+
     # Base cases, the second condition
     # is important to avoid unnecessary
     # recursive calls
     if root == None or c[0] >= k:
         return
-
+    print("root", root.value, "k", k, "c", c,"largest")
     # Follow reverse inorder traversal
     # so that the largest element is
     # visited first
@@ -34,8 +35,9 @@ def kthLargestUtil(root, k, c):
     # If c becomes k now, then this is
     # the k'th largest
     if c[0] == k:
-        print("K'th largest element is",
-              root.value)
+        print("found kth largest")
+        global largest
+        largest = root.value
         return
 
     # Recur for left subtree
@@ -50,9 +52,10 @@ def kthLargest(root, k):
 
     # Note that c is passed by reference
     kthLargestUtil(root, k, c)
+    return largest
 
 
-def findKthLargestValue(root, number):
+def findKthLargestValueInBst(root, number):
     return kthLargest(root, number)
 
 
@@ -67,5 +70,5 @@ if __name__ == '__main__':
     root.left.right = BinaryTree(3)
 
     number = 3
-    kth_largest = findKthLargestValue(root, number)
+    kth_largest = findKthLargestValueInBst(root, number)
     print(kth_largest)
