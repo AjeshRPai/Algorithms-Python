@@ -1,11 +1,11 @@
 class ContinuousMedianHandler:
     def __init__(self):
-        self.lowers = Heap(MAX_HEAP_FUNC,[])
-        self.greaters = Heap(MIN_HEAP_FUNC,[])
+        self.lowers = Heap(MAX_HEAP_FUNC, [])
+        self.greaters = Heap(MIN_HEAP_FUNC, [])
         self.median = None
 
     def insert(self, number):
-        if not self.lowers.length or number<self.lowers.peek():
+        if not self.lowers.length or number < self.lowers.peek():
             self.lowers.insert(number)
         else:
             self.greaters.insert(number)
@@ -16,21 +16,22 @@ class ContinuousMedianHandler:
         return self.median
 
     def rebalance_heaps(self):
-        if self.lowers.length - self.greaters.length ==2:
+        if self.lowers.length - self.greaters.length == 2:
             self.greaters.insert(self.lowers.remove())
-        elif self.greaters.length - self.lowers.length ==2:
+        elif self.greaters.length - self.lowers.length == 2:
             self.lowers.insert(self.greaters.remove())
 
     def update_median(self):
         if self.lowers.length == self.greaters.length:
-            self.median = (self.lowers.peek()+self.greaters.peek())/2
+            self.median = (self.lowers.peek() + self.greaters.peek()) / 2
         elif self.lowers.length > self.greaters.length:
             self.median = self.lowers.peek()
         else:
             self.median = self.greaters.peek()
 
+
 class Heap:
-    def __init__(self, comparison_function,array):
+    def __init__(self, comparison_function, array):
         self.comparison_function = comparison_function
         self.heap = self.buildHeap(array)
         self.length = len(self.heap)
@@ -88,7 +89,7 @@ class Heap:
     def remove(self):
         self.swap(0, len(self.heap) - 1, self.heap)
         value_to_remove = self.heap.pop()
-        self.length-=1
+        self.length -= 1
         self.siftDown(0, len(self.heap) - 1, self.heap)
         return value_to_remove
 
@@ -101,11 +102,13 @@ class Heap:
     def swap(self, i, j, heap):
         heap[i], heap[j] = heap[j], heap[i]
 
-def MAX_HEAP_FUNC(a,b):
-    return a>b
 
-def MIN_HEAP_FUNC(a,b):
-    return a<b
+def MAX_HEAP_FUNC(a, b):
+    return a > b
+
+
+def MIN_HEAP_FUNC(a, b):
+    return a < b
 
 
 if __name__ == '__main__':
