@@ -29,4 +29,4 @@ def reverseList(list):
 
 if __name__ == '__main__':
     word = "Algoexpert is the best"
-    reverseWordsInString(word)
+    print(reverseWordsInString(word))
