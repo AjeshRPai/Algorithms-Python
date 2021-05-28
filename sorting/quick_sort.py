@@ -19,9 +19,7 @@ def partition(arr, low, high):
 # arr[] --> Array to be sorted,
 # low  --> Starting index,
 # high  --> Ending index
-
 # Function to do Quick sort
-
 
 def quickSort(arr, low, high):
     if len(arr) == 1:
@@ -40,8 +38,20 @@ def quickSort(arr, low, high):
     return arr
 
 
+def quickSort2(array):
+    if len(array)<2:
+        return array
+
+    pivot = array[0]
+    less = [i for i in array[1:] if i<=pivot]
+    greater = [i for i in array[1:] if i>pivot]
+
+    return quickSort2(less)+[pivot]+quickSort2(greater)
+
+
 
 if __name__ == '__main__':
     array = [8, 5, 2, 9, 5, 6, 3]
     print(quickSort(array,0,len(array)-1))
+    print(quickSort2(array))
 
