@@ -31,6 +31,19 @@ def print_linked_list(linkedList: LinkedList):
 
     print(list)
 
+def remove_duplicate_from_linked_list_2(linkedList: LinkedList):
+    current_node = linkedList
+
+    while current_node is not None:
+        current_distinct = current_node.next
+        while current_distinct is not None and current_distinct.value == current_node.value:
+            current_distinct = current_distinct.next
+        current_node.next = current_distinct
+        current_node = current_node.next
+
+    return linkedList
+
+
 
 if __name__ == '__main__':
     node = LinkedList(1)
@@ -44,4 +57,4 @@ if __name__ == '__main__':
     node4.next = node5
     node6 = LinkedList(6)
     node5.next = node6
-    print_linked_list(remove_duplicate_from_linked_list(node))
+    print_linked_list(remove_duplicate_from_linked_list_2(node))
