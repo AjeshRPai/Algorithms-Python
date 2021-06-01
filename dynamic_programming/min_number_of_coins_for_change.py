@@ -13,15 +13,17 @@
 # will the array of denominations sorted ?
 
 def minNumberOfCoinsForChange(n, denoms):
-    change = [float("inf") for amount in range(n + 1)]
-    print(len(denoms))
-    change[0] = 0
-    for coin in denoms:
-        for amount in range(len(change)):
-            if coin <= amount:
-                change[amount] = min(change[amount], 1 + change[amount - coin])
+    array_of_values = [float('inf')] * (n+1)
 
-    return change[n] if change[n] != float("inf") else -1
+    array_of_values[0] = 0
+
+    for coin in denoms:
+        for price in range(0, len(array_of_values)):
+            print(coin, price)
+            if price >= coin:
+                array_of_values[price] = min(1 + array_of_values[price - coin], array_of_values[price])
+
+    return array_of_values[n] if array_of_values[n] != float('inf') else -1
 
 
 if __name__ == '__main__':
