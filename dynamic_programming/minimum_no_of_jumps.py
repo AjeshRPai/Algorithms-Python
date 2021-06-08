@@ -16,4 +16,7 @@ def minNumberOfJumps(array):
 
 if __name__ == '__main__':
     array = [3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 3]
+    array_2 = [3, 4, 2, 1, 5]
     print(minNumberOfJumps(array))
+    print(minNumberOfJumps(array_2))
+
