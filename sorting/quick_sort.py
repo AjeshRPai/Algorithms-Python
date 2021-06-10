@@ -38,20 +38,19 @@ def quickSort(arr, low, high):
     return arr
 
 
-def quickSort2(array):
-    if len(array)<2:
-        return array
+def quickSort3(arr):
+    if len(arr) <= 1:
+        return arr
 
-    pivot = array[0]
-    less = [i for i in array[1:] if i<=pivot]
-    greater = [i for i in array[1:] if i>pivot]
+    partition = arr[0]
 
-    return quickSort2(less)+[pivot]+quickSort2(greater)
+    less = [i for i in arr[1:] if i <= partition]
+    greater = [i for i in array[1:] if i > partition]
 
+    return quickSort3(less) + [partition] + quickSort3(greater)
 
 
 if __name__ == '__main__':
     array = [8, 5, 2, 9, 5, 6, 3]
-    print(quickSort(array,0,len(array)-1))
-    print(quickSort2(array))
-
+    print(quickSort(array, 0, len(array) - 1))
+    print(quickSort3(array))
