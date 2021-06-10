@@ -1,22 +1,20 @@
+def insertInStack(stack, element):
+    if len(stack) == 0 or stack[len(stack)-1]<element:
+        stack.append(element)
+        return
+
+    current_top = stack.pop()
+    insertInStack(stack, element)
+    stack.append(current_top)
+
+
 def sortStack(stack):
     if len(stack) < 2:
         return stack
-
-    current_value = stack.pop()
+    top = stack.pop()
     sortStack(stack)
-
-    insert_recursive(stack, current_value)
+    insertInStack(stack, top)
     return stack
-
-
-def insert_recursive(current_stack, current_value):
-    if len(current_stack) == 0 or current_value >= current_stack[len(current_stack) - 1]:
-        current_stack.append(current_value)
-        return
-
-    top_element = current_stack.pop()
-    insert_recursive(current_stack, current_value)
-    current_stack.append(top_element)
 
 
 if __name__ == '__main__':
