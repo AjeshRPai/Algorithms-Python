@@ -1,3 +1,6 @@
+import unittest
+
+
 # This is an input class. Do not edit.
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
@@ -5,10 +8,12 @@ class BinaryTree:
         self.left = left
         self.right = right
 
+
 def findNodesDistanceK(tree, target, k):
     nodesDistancek = []
     findDistanceFromNodeToTarget(tree, target, k, nodesDistancek)
     return nodesDistancek
+
 
 def findDistanceFromNodeToTarget(node, target, k, nodesDistancek):
     if node is None:
@@ -29,10 +34,11 @@ def findDistanceFromNodeToTarget(node, target, k, nodesDistancek):
         return leftDistance + 1
 
     if rightDistance != -1:
-        addSubTreeNodesAtDistanceK(node.right, rightDistance + 1, k, nodesDistancek)
+        addSubTreeNodesAtDistanceK(node.left, rightDistance + 1, k, nodesDistancek)
         return rightDistance + 1
 
     return -1
+
 
 def addSubTreeNodesAtDistanceK(node, distance, k, nodesDistancek):
     if node is None:
@@ -45,17 +51,23 @@ def addSubTreeNodesAtDistanceK(node, distance, k, nodesDistancek):
         addSubTreeNodesAtDistanceK(node.right, distance + 1, k, nodesDistancek)
 
 
-
+class Test(unittest.TestCase):
+    def test_case_1(self):
+        root = BinaryTree(1)
+        root.left = BinaryTree(2)
+        root.right = BinaryTree(3)
+        root.left.left = BinaryTree(4)
+        root.left.right = BinaryTree(5)
+        root.right.right = BinaryTree(6)
+        root.right.right.left = BinaryTree(7)
+        root.right.right.right = BinaryTree(8)
+        target = 3
+        k = 2
+        expected = [2, 7, 8]
+        actual = findNodesDistanceK(root, target, k)
+        actual.sort()
+        self.assertCountEqual(actual, expected)
 
 
 if __name__ == '__main__':
-    root = BinaryTree(1)
-    root.right = BinaryTree(3)
-    root.right.left = BinaryTree(7)
-    root.right.right = BinaryTree(6)
-    root.left = BinaryTree(2)
-    root.left.right = BinaryTree(5)
-    root.left.left = BinaryTree(4)
-    root.left.left.right = BinaryTree(9)
-    root.left.left.left = BinaryTree(8)
-    diameter = findNodesDistanceK(root, root)
+    unittest.main()
