@@ -1,7 +1,11 @@
+from collections import defaultdict
+
 def groupAnagrams(words):
     anagrams = {}
     for word in words:
         sorted_word = "".join(sorted(word))
+        print(word,sorted_word)
+        print(anagrams)
         if sorted_word in anagrams:
             anagrams[sorted_word].append(word)
         else:
