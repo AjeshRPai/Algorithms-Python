@@ -16,7 +16,7 @@ def reconstructBstFromRange(lowerBound, upperBound, preOrderTraversalValues, cur
         return None
 
     root_value = preOrderTraversalValues[current_tree.root_index]
-    if root_value<lowerBound or root_value>upperBound:
+    if root_value<lowerBound or root_value>=upperBound:
         return None
 
     current_tree.root_index+=1
