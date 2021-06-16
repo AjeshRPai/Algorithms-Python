@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/find-the-missing-number/
+
 def findMissingNumber(array):
     n = len(array)+1
     n_elements_sum=n*(n+1)//2
