@@ -7,8 +7,8 @@ class BinaryTree:
         self.parent = parent
 
 
-def get_left_most_child(right):
-    current_node = right
+def get_left_most_child(node):
+    current_node = node
 
     while current_node.left is not None:
         current_node = current_node.left
