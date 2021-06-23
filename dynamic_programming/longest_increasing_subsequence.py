@@ -1,12 +1,10 @@
 def longestIncreasingSubsequence(array):
-    sequence = [None] * len(array)
+    sequence = [None for x in array]
     lengths = [1 for x in array]
-    sequence[0] = 1
     max_sequence_index = 0
-
     for index_1 in range(len(array)):
+        first_number = array[index_1]
         for index_2 in range(0,index_1):
-            first_number = array[index_1]
             second_number = array[index_2]
             if second_number < first_number and lengths[index_2] + 1 >= lengths[index_1]:
                 lengths[index_1] = lengths[index_2] + 1
@@ -14,10 +12,6 @@ def longestIncreasingSubsequence(array):
         if lengths[index_1] >= lengths[max_sequence_index]:
             max_sequence_index = index_1
 
-    print(max_sequence_index)
-    print("sequence",sequence)
-    print("current index",max_sequence_index)
-    print(lengths)
 
     return buildSequence(array,sequence,max_sequence_index)
 
@@ -27,6 +21,7 @@ def buildSequence(array,sequences,current_index):
         sequence.append(array[current_index])
         current_index = sequences[current_index]
     return list(reversed(sequence))
+
 
 
 if __name__ == '__main__':
