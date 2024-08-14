@@ -16,16 +16,12 @@ class Node:
     # to the queue
     def breadthFirstSearch(self, array: []):
         queue = [self]
-        while len(queue)>0:
+        while len(queue) > 0:
             current = queue.pop(0)
             array.append(current.name)
             for child in current.children:
                 queue.append(child)
         return array
-
-
-
-
 
 
 if __name__ == '__main__':
@@ -61,4 +57,3 @@ if __name__ == '__main__':
     nodeA.breadthFirstSearch(array)
     for i in array:
         print(i)
-
