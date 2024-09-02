@@ -1,7 +1,6 @@
 from collections import deque
 from typing import Optional, List
 
-
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -26,9 +25,7 @@ class Solution:
 
             if rightSide:
                 res.append(rightSide.val)  # Add the rightmost node value to the result
-
         return res
-
 
 if __name__ == '__main__':
     root = TreeNode(1)
