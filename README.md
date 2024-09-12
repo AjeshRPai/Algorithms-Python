@@ -1,7 +1,3 @@
-Here's an updated README draft incorporating the topics displayed in your directory structure:
-
----
-
 # Algorithms-Python
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AjeshRPai/Algorithms-Python)
@@ -83,10 +79,6 @@ The repository is organized by topic, covering a wide range of algorithms and da
 - Add more advanced algorithms and data structures.
 - Enhance documentation with detailed explanations of each solution.
 - Provide time and space complexity analysis for each solution.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📫 Contact
 
