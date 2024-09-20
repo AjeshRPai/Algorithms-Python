@@ -1,6 +1,6 @@
 from queue import LifoQueue
 
-# https://www.geeksforgeeks.org/reduce-the-string-by-removing-k-consecutive-identical-characters/
+# https://www.geeksforgeeks.org/reduce-the-stcols = rows = squares = defaultdict(set)ring-by-removing-k-consecutive-identical-characters/
 
 def remove_kth_consecutive(word, k):
     stack = LifoQueue(len(word))
