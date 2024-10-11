@@ -1,26 +1,44 @@
 from typing import List
 
+# edge cases
+# if the amount is less than 0 or the coins array is empty
+# if the amount is zero then return 1
 
-def change(amount: int, coins: List[int]) -> int:
-    dp = [0] * (amount + 1)
-    dp[0] = 1
+# initialize an array that will store the calculation of the min no of coins for that amount
+# initialize the amount
+# for each coin
+#   initialize an 1D array to keep track of the no of ways for each amount
+#   assign the  no of ways calculated for that amount till no with the coins so far
+#   for each amount check if the amount is greater than the coin in loop,
+#  if its greater then check the ways for amount - coin
+#   assign the calculated ways to the current ways and return for the target amount
+#
 
-    for i in range(len(coins) -1, -1, -1):
-        nextDp = [0] * (amount+1)
-        nextDp[0] = 1
+def change(targetAmount: int, coins: List[int]) -> int:
+    coin_ways = [0] * (targetAmount + 1)
+    coin_ways[0] = 1
 
-        for amount in range(1, amount+1):
-            nextDp[amount] = dp[amount]
-            if amount - coins[i] >=0:
-                nextDp[amount] += nextDp[amount-coins[i]]
-            print(" ", nextDp[amount], end="")
-        dp = nextDp
+    for coin in reversed(coins):
+        print("coin ways", coin_ways)
+        current_ways = [0] * (targetAmount + 1)
+        current_ways[0] = 1
+        print("current ways ", current_ways , " for coin" , coin)
+
+
+        for amount in range(1, targetAmount + 1):
+            print("coin ways ", coin_ways, "amount", amount)
+            current_ways[amount] = coin_ways[amount]
+            if amount - coin >=0:
+                current_ways[amount] += current_ways[amount-coin]
+
+        print("calculated current ways", current_ways)
+        coin_ways = current_ways
         print("")
-    return dp[amount]
+    return coin_ways[targetAmount]
 
 
 # Time  O(amount)
 # Space O(amount)
 
 if __name__ == '__main__':
-    print(change(amount=4, coins=[1, 2, 3]))
+    print(change(targetAmount=4, coins=[1, 2, 3]))
