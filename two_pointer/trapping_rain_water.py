@@ -26,7 +26,8 @@ class Solution:
                 r -= 1
                 # Update the right max boundary
                 rightMax = max(rightMax, height[r])
-                # Calculate the water trapped and add to the result
+                # Calculate the water trapped between the max and the height if its less
+                # and add to the result
                 res += rightMax - height[r]
 
         return res
