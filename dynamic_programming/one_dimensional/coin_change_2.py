@@ -19,21 +19,16 @@ def change(targetAmount: int, coins: List[int]) -> int:
     coin_ways[0] = 1
 
     for coin in reversed(coins):
-        print("coin ways", coin_ways)
         current_ways = [0] * (targetAmount + 1)
         current_ways[0] = 1
-        print("current ways ", current_ways , " for coin" , coin)
 
 
         for amount in range(1, targetAmount + 1):
-            print("coin ways ", coin_ways, "amount", amount)
             current_ways[amount] = coin_ways[amount]
             if amount - coin >=0:
                 current_ways[amount] += current_ways[amount-coin]
 
-        print("calculated current ways", current_ways)
         coin_ways = current_ways
-        print("")
     return coin_ways[targetAmount]
 
 
