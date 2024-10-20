@@ -14,22 +14,20 @@ class Solution:
         min_heap = [(0, 0)]  # (cost, point_index)
 
         while len(visited) < n:
-            cost, point = heapq.heappop(min_heap)
-            print("cost and point for the next index")
-            print(cost, point)
+            cost, current_point_index = heapq.heappop(min_heap)
+            print("cost and current_point_index for the next index")
+            print(cost, current_point_index)
 
-            if point in visited:
+            if current_point_index in visited:
                 continue
 
             total_cost += cost
-            visited.add(point)
+            visited.add(current_point_index)
 
-            for next_point in range(n):
-                if next_point not in visited:
-
-                    distance = manhattan_distance(points[point], points[next_point])
-                    print(distance, next_point, points[next_point])
-                    heapq.heappush(min_heap, (distance, next_point))
+            for point_index in range(n):
+                if point_index not in visited:
+                    distance = manhattan_distance(points[current_point_index], points[point_index])
+                    heapq.heappush(min_heap, (distance, point_index))
 
         return total_cost
 
