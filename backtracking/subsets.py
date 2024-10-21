@@ -8,19 +8,13 @@ class Solution:
         subset = []
 
         def dfs(i):
-            print("dfs of i called", i)
             if i >= len(nums):
-                print("subset copy", subset.copy())
                 res.append(subset.copy())
                 return
-            print("nums i ",nums[i])
             subset.append(nums[i])
-            print("subset after append", subset)
             dfs(i + 1)
 
-
             subset.pop()
-            print("after subset is popped", subset)
             dfs(i + 1)
 
         dfs(0)
@@ -34,4 +28,13 @@ class Solution:
 if __name__ == '__main__':
     solution = Solution()
     res = solution.subsets([1, 2, 3, 4, 5])
-    print(res)
+    nums1 = [1, 2, 3]
+    nums2 = [0]
+    nums3 = []
+    nums4 = [1, 2]
+
+    # Driver code to test the function
+    print("Subsets of [1, 2, 3]:", solution.subsets(nums1))
+    print("Subsets of [0]:", solution.subsets(nums2))
+    print("Subsets of [] (empty set):", solution.subsets(nums3))
+    print("Subsets of [1, 2]:", solution.subsets(nums4))
