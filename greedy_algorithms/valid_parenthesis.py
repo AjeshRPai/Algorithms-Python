@@ -1,4 +1,4 @@
-def checkValidString(self, s: str) -> bool:
+def checkValidString(s: str) -> bool:
     min_open, max_open = 0, 0
 
     for char in s:
