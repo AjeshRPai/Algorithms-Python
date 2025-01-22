@@ -1,18 +1,20 @@
 def minDistance(word1: str, word2: str) -> int:
     dp = [[float("inf")] * (len(word2) + 1) for i in range(len(word1) + 1)]
 
-    print(dp)
+    for row in dp:
+        print(row)
 
     for j in range(len(word2) + 1):
         dp[len(word1)][j] = len(word2) - j
 
-    print(dp)
+    for row in dp:
+        print(row)
 
     for i in range(len(word1) + 1):
         dp[i][len(word2)] = len(word1) - i
 
-    print(dp)
-
+    for row in dp:
+        print(row)
 
     for i in range(len(word1) - 1, -1, -1):
         for j in range(len(word2) - 1, -1, -1):
@@ -27,7 +29,7 @@ def minDistance(word1: str, word2: str) -> int:
 
 
 if __name__ == '__main__':
-    word1 = "monkeys"
-    word2 = "money"
+    word1 = "horse"
+    word2 = "ros"
     Output: 2
     print(minDistance(word1,word2))
