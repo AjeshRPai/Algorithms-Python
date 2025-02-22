@@ -1,6 +1,5 @@
 from typing import List
 
-
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         # Distance from source to all other nodes.
@@ -16,8 +15,7 @@ class Solution:
                     temp[v] = dist[u] + cost
 
             # Explicitly update dist values to prevent reference issues
-            for i in range(n):
-                dist[i] = temp[i]
+            dist = temp[:]
 
         return -1 if dist[dst] == float('inf') else dist[dst]
 

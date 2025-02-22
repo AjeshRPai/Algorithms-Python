@@ -1,6 +1,9 @@
 from typing import List
 import heapq
 
+# O(E) iterate through edges to create adjacency list
+# O(E * LOG V) For each edge there would be a value in heap, heap operation complexity is log V
+# O(V * LOG V) For each node we are checking, there would be
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
         # Build adjacency list (graph)
@@ -27,7 +30,7 @@ class Solution:
                     new_cost = current_cost + price
 
                     # Push only if we haven't found a cheaper way to get to 'neighbor' with 'stops_left - 1'
-                    if (neighbor, stops_left - 1) not in dist or new_cost < dist[(neighbor, stops_left - 1)]:
+                    if new_cost < dist.get((neighbor, stops_left - 1), float("inf")):
                         dist[(neighbor, stops_left - 1)] = new_cost
                         heapq.heappush(min_heap, (new_cost, neighbor, stops_left - 1))
 
